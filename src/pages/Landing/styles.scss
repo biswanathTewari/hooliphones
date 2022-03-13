@@ -1,0 +1,72 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 5rem var(--paddingH);
+}
+
+.intro {
+  border-top: 0.1rem solid var(--primary-color-dark);
+  background-color: var(--primary-color);
+}
+
+.intro-text {
+  color: var(--text-color);
+  width: 30rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin-bottom: 5rem;
+}
+
+.illustration {
+  width: 40rem;
+  padding: 0 2rem;
+}
+
+.intro-btns {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.install-text {
+  width: 30rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.promo-container {
+  background-color: #f8f8f8;
+}
+
+.promo-card {
+  height: 20rem;
+  width: 45%;
+  min-width: 30rem;
+  flex-basis: 100%;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.promo-card:hover {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+}
+
+.promo-card > .promo-card-img {
+  height: 80%;
+  width: 50%;
+  object-fit: contain;
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    justify-content: center;
+  }
+
+  .promo-card {
+    margin-bottom: 3rem;
+  }
+}
