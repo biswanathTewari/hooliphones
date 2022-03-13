@@ -1,0 +1,36 @@
+.e-logo {
+  max-width: 7rem;
+  max-height: 7rem;
+}
+
+.e-logo-small {
+  max-width: 5rem;
+  max-height: 5rem;
+}
+
+/* ---searchbar--- */
+
+.searchbar-wrapper {
+  width: 40%;
+  flex-shrink: 1;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.searchbar {
+  width: 100%;
+  padding: 0.4rem 0.5rem;
+  padding-right: 2.5rem;
+  border: 1px solid white;
+  border-radius: 0.75rem;
+  background-color: transparent;
+  color: var(--text-color);
+  font-size: 1rem;
+}
+
+.search-icon {
+  position: absolute;
+  right: 1rem;
+  font-size: 1rem;
+}

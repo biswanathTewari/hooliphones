@@ -14,3 +14,32 @@ body {
   color: black;
   background-color: var(--secondary-color-dark);
 }
+
+/* ---spacing--- */
+
+:root {
+  --paddingV: 2rem;
+  --paddingH: 4vw;
+}
+
+.padding-default {
+  padding: var(--paddingV) var(--paddingH);
+}
+
+*::-webkit-scrollbar {
+  width: 0.2rem;
+}
+*::-webkit-scrollbar-track {
+  background: rgba(155, 155, 155, 0.7);
+}
+*::-webkit-scrollbar-thumb {
+  background-color: var(--primary-color);
+  border-radius: 1.25rem;
+  border: transparent;
+}
+
+@media screen and (max-width: 768px) {
+  * {
+    font-size: 70%;
+  }
+}
