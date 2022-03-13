@@ -1,0 +1,16 @@
+@import url('https://glittercss.netlify.app/glitter.css');
+/* reset CSS  */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  font-family: 'Poppins', sans-serif;
+  transition: all 0.1s ease-in;
+  /* font-size: 62.5%; */
+}
+
+body {
+  color: black;
+  background-color: var(--secondary-color-dark);
+}
