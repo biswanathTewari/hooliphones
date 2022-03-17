@@ -1,7 +1,34 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { Link, useLocation } from 'react-router-dom'
 
 import './styles.scss'
+
+const NavLink = ({ to, text, toggleNav, isOpen, isBtn, icon }) => {
+  const { pathname } = useLocation()
+  // render the nav link unless we are currently on the page, edge case home nav link
+  if (!pathname.includes(to) || (to === '/' && pathname !== '/'))
+    return (
+      <li
+        style={{
+          animation: `${isOpen && 'nav-link-fade 0.5s ease forwards 0.5s'}`,
+        }}
+        onClick={toggleNav}
+      >
+        {isBtn ? (
+          <Link to={to} className="btn btn-transparent">
+            {text}
+          </Link>
+        ) : (
+          <Link to={to} className="nav-link">
+            <i className={`fas ${icon}`}></i> {text}
+          </Link>
+        )}
+      </li>
+    )
+
+  return <></>
+}
 
 const Index = ({ hasSearch }) => {
   const body = document.querySelector('body')
@@ -38,42 +65,53 @@ const Index = ({ hasSearch }) => {
           isOpen && 'navlinks-active'
         }`}
       >
-        <li
-          style={{
-            animation: `${isOpen && 'nav-link-fade 0.5s ease forwards 0.5s'}`,
-          }}
-          onClick={toggleNav}
-        >
-          <a href="#" className="nav-link">
-            Shop
-          </a>
-        </li>
-        <li
-          style={{
-            animation: `${isOpen && 'nav-link-fade 0.5s ease forwards 0.5s'}`,
-          }}
-          onClick={toggleNav}
-        >
-          <a href="#" className="nav-link">
-            <i className="fas fa-shopping-cart"></i> cart
-          </a>
-        </li>
-        <li
-          style={{
-            animation: `${isOpen && 'nav-link-fade 0.5s ease forwards 0.5s'}`,
-          }}
-          onClick={toggleNav}
-        >
-          <a href="#" className="btn btn-transparent">
-            Login
-          </a>
-        </li>
+        <NavLink
+          to={'/'}
+          text="home"
+          toggleNav={toggleNav}
+          isOpen={isOpen}
+          isBtn={false}
+          icon="fa-home"
+        />
+
+        <NavLink
+          to={'/shop'}
+          text="shop"
+          toggleNav={toggleNav}
+          isOpen={isOpen}
+          isBtn={false}
+          icon="fa-store"
+        />
+        <NavLink
+          to={'/cart'}
+          text="cart"
+          toggleNav={toggleNav}
+          isOpen={isOpen}
+          isBtn={false}
+          icon="fa-shopping-cart"
+        />
+        <NavLink
+          to={'/login'}
+          text="login"
+          toggleNav={toggleNav}
+          isOpen={isOpen}
+          isBtn={true}
+        />
       </ul>
       <div className="burger" onClick={toggleNav}>
         <i className="fas fa-bars"></i>
       </div>
     </nav>
   )
+}
+
+NavLink.propTypes = {
+  to: PropTypes.string,
+  text: PropTypes.string,
+  toggleNav: PropTypes.func,
+  isOpen: PropTypes.bool,
+  isBtn: PropTypes.bool,
+  icon: PropTypes.string,
 }
 
 Index.propTypes = {

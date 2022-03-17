@@ -1,12 +1,12 @@
 import React from 'react'
 
-import { LandingPage } from './pages'
+import Navigation from './navigation'
 import './styles.scss'
 
 function App() {
   return (
     <div className="App">
-      <LandingPage />
+      <Navigation />
     </div>
   )
 }
