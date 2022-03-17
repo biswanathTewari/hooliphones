@@ -1,3 +1,5 @@
 import LandingPage from './Landing'
+import LoginPage from './Login'
+import SignupPage from './Signup'
 
-export { LandingPage }
+export { LandingPage, LoginPage, SignupPage }
