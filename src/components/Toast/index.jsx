@@ -7,6 +7,8 @@ import './styles.scss'
 const Toast = () => {
   const { globalState, globalDispatch } = useGlobalState()
   const { message, type, show } = globalState.toast
+  const [timer, setTimer] = React.useState(4000)
+  let timerId = null
 
   const variants = {
     visible: {
@@ -26,9 +28,18 @@ const Toast = () => {
   const onCloseHandler = () => globalDispatch({ type: actions.closeToast })
 
   React.useEffect(() => {
+    if (timer === 0) onCloseHandler()
+  }, [timer])
+
+  React.useEffect(() => {
     if (show) {
-      setTimeout(() => onCloseHandler(), 4000)
+      setTimer(4000)
+      timerId = setInterval(() => {
+        setTimer(prev => prev - 100)
+      }, 100)
     }
+
+    return () => clearInterval(timerId)
   }, [show])
 
   if (!show) return null
@@ -45,6 +56,10 @@ const Toast = () => {
         className="fas fa-times btn-icon btn-icon-sm"
         onClick={onCloseHandler}
       ></i>
+      <div
+        className="timer"
+        style={{ width: `${(timer / 4000) * 100}%` }}
+      ></div>
     </motion.div>
   )
 }
