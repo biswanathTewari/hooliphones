@@ -60,6 +60,12 @@
   cursor: pointer;
 }
 
+.error-text {
+  color: red;
+  font-size: 0.8rem;
+  margin: 0.5rem 1rem;
+}
+
 @media screen and (max-width: 768px) {
   .login-card {
     width: 90%;
