@@ -30,6 +30,7 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.26.1",
     "dayjs": "^1.11.0",
+    "framer-motion": "^6.2.8",
     "jwt-decode": "^3.1.2",
     "jwt-encode": "^1.0.1",
     "miragejs": "^0.1.43",
