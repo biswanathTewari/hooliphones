@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link, useNavigate, Navigate } from 'react-router-dom'
 
 import { Navbar, Footer } from '../../components'
 import { useAuthForm } from '../../hooks'
@@ -16,7 +17,8 @@ const Signup = () => {
     resetForm,
   } = useAuthForm('Please agree to the terms and conditions')
   const { showToast } = useGlobalState()
-  const { dispatchUser } = useUser()
+  const { isLoggedIn, dispatchUser } = useUser()
+  const navigate = useNavigate()
 
   const onSubmitHandler = e => {
     e.preventDefault()
@@ -32,6 +34,7 @@ const Signup = () => {
         type: 'success',
       })
       resetForm()
+      navigate('/shop', { replace: true })
     } else {
       showToast({
         message: 'Try again!',
@@ -39,6 +42,8 @@ const Signup = () => {
       })
     }
   }
+
+  if (isLoggedIn) return <Navigate to={'/'} replace />
 
   return (
     <div className="app">
@@ -112,10 +117,10 @@ const Signup = () => {
             </div>
           </form>
           <div className="sign-up">
-            <p className="text-rg">
+            <Link to={'/login'} className="text-rg">
               Already have an account{'  '}
               <i className="fas fa-angle-right"></i>
-            </p>
+            </Link>
           </div>
         </div>
       </main>

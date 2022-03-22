@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate, Navigate, useLocation } from 'react-router-dom'
 
 import { Navbar, Footer } from '../../components'
 import { useAuthForm } from '../../hooks'
@@ -16,7 +16,10 @@ const Login = () => {
     resetForm,
   } = useAuthForm('', true)
   const { showToast } = useGlobalState()
-  const { dispatchUser } = useUser()
+  const { isLoggedIn, dispatchUser } = useUser()
+  const navigate = useNavigate()
+  const location = useLocation()
+  const from = location.state ? location.state.from?.pathname : '/'
 
   const onSubmitHandler = e => {
     e.preventDefault()
@@ -31,6 +34,7 @@ const Login = () => {
           type: 'success',
         })
         resetForm()
+        navigate(from, { replace: true })
       } else {
         showToast({
           message: 'Oops! Wrong email or password',
@@ -45,6 +49,7 @@ const Login = () => {
     }
   }
 
+  if (isLoggedIn) return <Navigate to={'/'} replace />
   return (
     <div className="app">
       <Navbar />
