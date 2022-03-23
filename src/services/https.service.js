@@ -1,12 +1,13 @@
 import axios from 'axios'
 import PropTypes from 'prop-types'
 
+import { Storage } from '../utils'
 export function callApi(
   endpoint,
   { method, body, headers, params } = { method: 'GET' },
 ) {
   let authToken
-  let auth = localStorage.getItem('authToken')
+  let auth = Storage.get('authToken')
 
   if (auth) authToken = auth
   return axios({
@@ -23,17 +24,16 @@ export function callApi(
   })
     .then(res => {
       if (res.data.encodedToken) {
-        localStorage.setItem('authToken', res.data.encodedToken)
+        Storage.store('authToken', res.data.encodedToken)
       }
+      return res.data
     })
     .catch(e => {
-      //TODO: add toast message
-      //   if (e.response.data?.errors?.length > 0) {
-      //     throw new Error(e.response.data.errors[0])
-      //   } else {
-      //     throw e
-      //   }
-      console.log(e)
+      if (e.response?.data?.errors?.length > 0) {
+        throw new Error(e.response.data.errors[0])
+      } else {
+        throw e
+      }
     })
 }
 

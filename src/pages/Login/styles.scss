@@ -24,10 +24,6 @@
   margin-bottom: 1rem;
 }
 
-.input-container {
-  margin-top: 1rem;
-}
-
 #email,
 #password {
   max-width: none;
@@ -46,11 +42,6 @@
   cursor: pointer;
 }
 
-.form-label {
-  line-height: normal;
-  cursor: pointer;
-}
-
 .forgot-password {
   cursor: pointer;
 }
@@ -58,12 +49,6 @@
 .sign-up {
   margin-top: 1rem;
   cursor: pointer;
-}
-
-.error-text {
-  color: red;
-  font-size: 0.8rem;
-  margin: 0.5rem 1rem;
 }
 
 @media screen and (max-width: 768px) {
