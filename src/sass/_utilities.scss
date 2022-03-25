@@ -1,0 +1,35 @@
+.padding-default {
+    padding: $paddingV $paddingH;
+}
+
+.pad-v{
+    padding: $paddingV 0;
+}
+
+.pad-H{
+    padding: 0 $paddingH;
+}
+
+.mb-5 {
+    margin-bottom: 5rem;
+  }
+  
+.mb {
+    margin-bottom: 0.25rem;
+}
+
+.d-flex{
+    display: flex;
+}
+
+.flex-row{
+    flex-direction: row;
+}
+
+.flow-col{
+    flex-direction: column;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}

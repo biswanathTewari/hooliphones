@@ -1,0 +1,19 @@
+@import "../../sass/index.scss";
+
+
+.toast {
+  color: var(--secondary-color);
+
+  i {
+    color: var(--secondary-color);
+  }
+
+  .timer {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 0.5rem;
+    background-color: var(--secondary-color);
+  }
+}

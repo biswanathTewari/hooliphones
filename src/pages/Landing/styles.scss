@@ -1,9 +1,14 @@
+@import "../../sass/index.scss";
+
 .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  padding: 5rem var(--paddingH);
+  padding: 5rem $paddingH;
+  @include respond(phone){
+    justify-content: center;
+  }
 }
 
 .intro {
@@ -49,6 +54,9 @@
   flex-basis: 100%;
   justify-content: center;
   cursor: pointer;
+  @include respond(phone){
+    margin-bottom: 3rem;
+  }
 }
 
 .promo-card:hover {
@@ -59,14 +67,4 @@
   height: 80%;
   width: 50%;
   object-fit: contain;
-}
-
-@media screen and (max-width: 768px) {
-  .container {
-    justify-content: center;
-  }
-
-  .promo-card {
-    margin-bottom: 3rem;
-  }
 }

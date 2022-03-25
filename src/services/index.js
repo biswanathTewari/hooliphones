@@ -1,4 +1,4 @@
 import { callApi } from './https.service'
-import { signUpService } from './auth.service'
+import { signUpService, loginService } from './auth.service'
 
-export { callApi, signUpService }
+export { callApi, signUpService, loginService }
