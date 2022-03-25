@@ -1,0 +1,31 @@
+// reset CSS
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  font-family: 'Poppins', sans-serif;
+  transition: all 0.1s ease-in;
+  /* font-size: 62.5%; */
+
+  @include respond(phone){
+      font-size: 70%;
+  }
+}
+
+body {
+  color: black;
+  background-color: var(--secondary-color-dark);
+}
+
+*::-webkit-scrollbar {
+  width: 0.2rem;
+}
+*::-webkit-scrollbar-track {
+  background: rgba(155, 155, 155, 0.7);
+}
+*::-webkit-scrollbar-thumb {
+  background-color: var(--primary-color);
+  border-radius: 1.25rem;
+  border: transparent;
+}

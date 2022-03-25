@@ -1,3 +1,5 @@
+@import "../../sass/index.scss";
+
 .main {
   min-height: 90vh;
   display: flex;
@@ -16,6 +18,10 @@
   border-radius: 1rem;
   background-color: var(--card-color);
   margin: 3rem 0;
+
+  @include respond(phone){
+    width: 90%;
+  }
 }
 
 .login-card > form {
@@ -38,17 +44,7 @@
   cursor: pointer;
 }
 
-.forgot-password {
-  cursor: pointer;
-}
-
 .sign-up {
   margin-top: 1rem;
   cursor: pointer;
-}
-
-@media screen and (max-width: 768px) {
-  .login-card {
-    width: 90%;
-  }
 }
