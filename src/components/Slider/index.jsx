@@ -46,7 +46,7 @@ const Slider = ({ min, max, onChange }) => {
   }, [maxVal, minVal, onChange])
 
   return (
-    <div className="conatiner">
+    <div className="slider-conatiner">
       {/* left thumb */}
       <input
         type="range"
