@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Link, useLocation } from 'react-router-dom'
 
+import { useUser } from '../../store'
 import './styles.scss'
 
 const NavLink = ({ to, text, toggleNav, isOpen, isBtn, icon }) => {
@@ -34,6 +35,7 @@ const Index = ({ hasSearch }) => {
   const body = document.querySelector('body')
   const html = document.querySelector('html')
   const [isOpen, setIsOpen] = React.useState(false)
+  const { isLoggedIn } = useUser()
 
   const toggleNav = () => {
     setIsOpen(prev => !prev)
@@ -90,13 +92,23 @@ const Index = ({ hasSearch }) => {
           isBtn={false}
           icon="fa-shopping-cart"
         />
-        <NavLink
-          to={'/login'}
-          text="login"
-          toggleNav={toggleNav}
-          isOpen={isOpen}
-          isBtn={true}
-        />
+        {!isLoggedIn ? (
+          <NavLink
+            to={'/login'}
+            text="login"
+            toggleNav={toggleNav}
+            isOpen={isOpen}
+            isBtn={true}
+          />
+        ) : (
+          <NavLink
+            to={'/profile'}
+            text="profile"
+            toggleNav={toggleNav}
+            isOpen={isOpen}
+            isBtn={true}
+          />
+        )}
       </ul>
       <div className="burger" onClick={toggleNav}>
         <i className="fas fa-bars"></i>

@@ -1,4 +1,4 @@
-@import "../../sass/index.scss";
+@import '../../sass/index.scss';
 
 .container {
   display: flex;
@@ -6,7 +6,7 @@
   align-items: center;
   flex-wrap: wrap;
   padding: 5rem $paddingH;
-  @include respond(phone){
+  @include respond(phone) {
     justify-content: center;
   }
 }
@@ -54,7 +54,7 @@
   flex-basis: 100%;
   justify-content: center;
   cursor: pointer;
-  @include respond(phone){
+  @include respond(phone) {
     margin-bottom: 3rem;
   }
 }

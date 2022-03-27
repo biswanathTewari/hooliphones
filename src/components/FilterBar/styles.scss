@@ -2,16 +2,15 @@
 
 /* filters */
 .filterbar {
-  width: 0%;
+  width: 0;
   height: 100vh;
-  padding: 1rem;
   position: sticky;
   top: 0;
   left: 0;
   box-shadow: 0.5rem 0.5rem 5rem rgba(0, 0, 0, 0.15);
   background-color: var(--secondary-color);
   overflow: auto;
-  transform: translateX(-100%);
+  transform: translateX(100%);
   transition: transform 1s ease;
 
   .filterbar-header {
@@ -67,6 +66,7 @@
 }
 
 .filterbar-show {
+  padding: 1rem;
   transform: translateX(0);
   width: 18%;
   @include respond(tab-land) {
@@ -88,8 +88,4 @@
 .fa-star {
   color: var(--tertiary-color);
   font-size: 1rem;
-}
-
-.filterbar-mobile {
-  display: none;
 }

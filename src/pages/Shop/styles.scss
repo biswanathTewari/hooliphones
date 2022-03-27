@@ -1,0 +1,81 @@
+@import '../../sass/index.scss';
+
+.shop-container {
+  position: relative;
+}
+
+.product-list-content {
+  width: 100%;
+  transition: all 1.25s;
+
+  .product-list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+
+    .filter-btn {
+      color: var(--text-color-dark);
+      border: 0.1rem solid var(--text-color-dark);
+      background-color: var(--secondary-color-dark);
+      border-radius: 0.25rem;
+      padding: 0.25rem 0.75rem;
+      display: flex;
+      align-items: center;
+      font-size: 1rem;
+      cursor: pointer;
+
+      &:hover {
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+      }
+
+      @include respond(phone) {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        padding: 0.5rem 1.5rem;
+        font-size: 2rem;
+        z-index: var(--zindex-3);
+      }
+    }
+
+    .filter-btn-active {
+      background-color: var(--text-color-dark);
+      color: var(--secondary-color-dark);
+
+      &:hover {
+        box-shadow: none;
+      }
+    }
+  }
+
+  .product-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 3rem 1.2rem;
+
+    @include respond(tab-land) {
+      width: 100%;
+      justify-content: center;
+    }
+
+    @include respond(phone) {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+}
+
+.product-list-transition {
+  width: 82%;
+  @include respond(tab-land) {
+    width: 75%;
+  }
+  @include respond(phone) {
+    width: 100%;
+    height: 0;
+    overflow: hidden;
+    position: absolute;
+  }
+}
