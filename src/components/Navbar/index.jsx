@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Link, useLocation } from 'react-router-dom'
 
+import { useUser, useProducts, actions } from '../../store'
 import './styles.scss'
 
 const NavLink = ({ to, text, toggleNav, isOpen, isBtn, icon }) => {
@@ -34,11 +35,23 @@ const Index = ({ hasSearch }) => {
   const body = document.querySelector('body')
   const html = document.querySelector('html')
   const [isOpen, setIsOpen] = React.useState(false)
+  const [searchTerm, setSearchTerm] = React.useState('')
+  const { isLoggedIn } = useUser()
+  const { dispatchProducts } = useProducts()
 
   const toggleNav = () => {
     setIsOpen(prev => !prev)
     body.classList.toggle('body-overflow')
     html.classList.toggle('body-overflow')
+  }
+
+  const handleSearch = () => {
+    dispatchProducts({
+      type: actions.setSearch,
+      payload: searchTerm,
+    })
+    console.log('searchTerm', searchTerm)
+    setSearchTerm('')
   }
 
   return (
@@ -55,10 +68,22 @@ const Index = ({ hasSearch }) => {
         ></path>
       </svg>
       {hasSearch && (
-        <div className="searchbar-wrapper">
-          <input type="text" className="searchbar" placeholder="Search" />
-          <i className="fas fa-search search-icon"></i>
-        </div>
+        <form
+          className="searchbar-wrapper"
+          onSubmit={e => {
+            e.preventDefault()
+            handleSearch()
+          }}
+        >
+          <input
+            type="text"
+            className="searchbar"
+            placeholder="Search"
+            value={searchTerm}
+            onChange={e => setSearchTerm(e.target.value)}
+          />
+          <i className="fas fa-search search-icon" onClick={handleSearch}></i>
+        </form>
       )}
       <ul
         className={`nav-links align-items-center ${
@@ -90,13 +115,23 @@ const Index = ({ hasSearch }) => {
           isBtn={false}
           icon="fa-shopping-cart"
         />
-        <NavLink
-          to={'/login'}
-          text="login"
-          toggleNav={toggleNav}
-          isOpen={isOpen}
-          isBtn={true}
-        />
+        {!isLoggedIn ? (
+          <NavLink
+            to={'/login'}
+            text="login"
+            toggleNav={toggleNav}
+            isOpen={isOpen}
+            isBtn={true}
+          />
+        ) : (
+          <NavLink
+            to={'/profile'}
+            text="profile"
+            toggleNav={toggleNav}
+            isOpen={isOpen}
+            isBtn={true}
+          />
+        )}
       </ul>
       <div className="burger" onClick={toggleNav}>
         <i className="fas fa-bars"></i>

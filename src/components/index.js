@@ -4,5 +4,16 @@ import Toast from './Toast'
 import Filter from './FilterBar'
 import { TextInput } from './Form'
 import Slider from './Slider'
+import VerticalCard from './VerticalCard'
+import Loader from './Loader'
 
-export { Navbar, Footer, Toast, Filter, TextInput, Slider }
+export {
+  Navbar,
+  Footer,
+  Toast,
+  Filter,
+  TextInput,
+  Slider,
+  VerticalCard,
+  Loader,
+}

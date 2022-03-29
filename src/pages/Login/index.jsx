@@ -96,7 +96,7 @@ const Login = () => {
                 />
                 <p className="text-rg">Remember me</p>
               </div>
-              <a href="#" className="text-rg forgot-password">
+              <a href="#" className="text-rg">
                 {' '}
                 Forgot password?{' '}
               </a>

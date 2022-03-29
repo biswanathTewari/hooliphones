@@ -1,0 +1,40 @@
+@import '../../sass/index.scss';
+
+.zoom-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+
+  .zoom {
+    cursor: pointer;
+    transition: all 1s ease-in-out;
+
+    &:hover {
+      transform: scale(1.5);
+    }
+  }
+}
+
+.card-btns {
+  max-width: 18rem;
+  @include respond(phone) {
+    height: 7rem;
+  }
+}
+
+.card-rating {
+  padding: 0.5rem 0;
+  background-color: var(--primary-color);
+  font-size: 0.75rem;
+  margin-left: auto;
+  border-radius: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+
+  i {
+    font-size: 1rem;
+    color: var(--text-color);
+  }
+}

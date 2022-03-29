@@ -41,12 +41,11 @@ const Slider = ({ min, max, onChange }) => {
   }, [maxVal, getPercentage])
 
   React.useEffect(() => {
-    //   onChange({ min: minVal, max: maxVal })
-    onChange()
+    onChange(minVal, maxVal)
   }, [maxVal, minVal, onChange])
 
   return (
-    <div className="conatiner">
+    <div className="slider-conatiner">
       {/* left thumb */}
       <input
         type="range"

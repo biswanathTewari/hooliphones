@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 import { Navbar, Footer } from '../../components'
 import { Hero, Iphone11 } from '../../assets/images'
@@ -6,7 +7,7 @@ import './styles.scss'
 
 const Index = () => {
   return (
-    <div classNameName="App">
+    <div className="App">
       <Navbar />
       <main>
         <article className="container intro">
@@ -20,12 +21,9 @@ const Index = () => {
               </h1>
             </h1>
             <div className="intro-btns">
-              <a
-                href="../Product/index.html"
-                className="btn btn-primary mg-r-1"
-              >
+              <Link to="/shop" className="btn btn-primary mg-r-1">
                 shop now
-              </a>
+              </Link>
               <a href="#promo" className="btn btn-secondary">
                 {' '}
                 pre-order{' '}

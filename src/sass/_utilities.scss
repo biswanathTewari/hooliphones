@@ -1,35 +1,43 @@
 .padding-default {
-    padding: $paddingV $paddingH;
+  padding: $paddingV $paddingH;
 }
 
-.pad-v{
-    padding: $paddingV 0;
+.pad-v {
+  padding: $paddingV 0;
 }
 
-.pad-H{
-    padding: 0 $paddingH;
+.pad-H {
+  padding: 0 $paddingH;
 }
 
 .mb-5 {
-    margin-bottom: 5rem;
-  }
-  
+  margin-bottom: 5rem;
+}
+
 .mb {
-    margin-bottom: 0.25rem;
+  margin-bottom: 0.25rem;
 }
 
-.d-flex{
-    display: flex;
+.ml-1 {
+  margin-left: 0.25rem;
 }
 
-.flex-row{
-    flex-direction: row;
+.mr-1 {
+  margin-right: 0.25rem;
 }
 
-.flow-col{
-    flex-direction: column;
+.d-flex {
+  display: flex;
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
+.flow-col {
+  flex-direction: column;
 }
 
 .cursor-pointer {
-    cursor: pointer;
+  cursor: pointer;
 }
