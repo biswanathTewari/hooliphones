@@ -3,10 +3,42 @@ import PropTypes from 'prop-types'
 
 import './styles.scss'
 
+const RatingDisplay = ({ rating }) => {
+  return (
+    <div className="card-rating">
+      {[...Array(5)].map((_, index) => (
+        <>
+          {index <= rating - 1 ? (
+            <i className="fas fa-star"></i>
+          ) : (
+            <i className="far fa-star"></i>
+          )}
+        </>
+      ))}
+    </div>
+  )
+}
+
 const VerticalCard = ({ product }) => {
-  const { img, title, subtitle, price, prevPrice } = product
+  const {
+    img,
+    title,
+    subtitle,
+    price,
+    prevPrice,
+    stock,
+    fastDeliveryOnly,
+    rating,
+  } = product
   return (
     <div className="card card-shadow">
+      {fastDeliveryOnly && (
+        <div className="card-badge">
+          <p className="text-sm">
+            <i className="fas fa-truck"></i> fast
+          </p>
+        </div>
+      )}
       <div className="zoom-wrapper">
         <img
           src={img}
@@ -32,6 +64,7 @@ const VerticalCard = ({ product }) => {
             </span>
             <span className="text-secondary text-rg">10%</span>
           </p>
+          <RatingDisplay rating={rating} />
         </div>
         <div className="card-btns">
           <a href="#" className="btn btn-primary mg-right1">
@@ -42,8 +75,18 @@ const VerticalCard = ({ product }) => {
           </a>
         </div>
       </div>
+
+      {!stock > 0 && (
+        <div className="card-text-overlay">
+          <p className="h6">Out of stock</p>
+        </div>
+      )}
     </div>
   )
+}
+
+RatingDisplay.propTypes = {
+  rating: PropTypes.number.isRequired,
 }
 
 VerticalCard.propTypes = {
@@ -53,6 +96,9 @@ VerticalCard.propTypes = {
     subtitle: PropTypes.string.isRequired,
     price: PropTypes.string.isRequired,
     prevPrice: PropTypes.string.isRequired,
+    stock: PropTypes.number.isRequired,
+    fastDeliveryOnly: PropTypes.bool.isRequired,
+    rating: PropTypes.number.isRequired,
   }),
 }
 

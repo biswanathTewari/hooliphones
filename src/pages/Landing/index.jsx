@@ -7,7 +7,7 @@ import './styles.scss'
 
 const Index = () => {
   return (
-    <div classNameName="App">
+    <div className="App">
       <Navbar />
       <main>
         <article className="container intro">

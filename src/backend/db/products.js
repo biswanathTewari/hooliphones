@@ -5,6 +5,8 @@ import { v4 as uuid } from 'uuid'
  * You can add products of your wish with different attributes
  * */
 
+const processors = ['hooli 360', 'snapdragon 780', 'mediatek X']
+
 export const products = [
   {
     _id: uuid(),
@@ -13,8 +15,11 @@ export const products = [
     price: '1,00,000',
     cost: 100000,
     prevPrice: '1,11,111',
+    processor: processors[Math.floor(Math.random() * processors.length)],
     img: 'https://res.cloudinary.com/iambizan/image/upload/v1648316235/images/classX_htwnvz.jpg',
-    onSale: false,
+    fastDeliveryOnly: false,
+    rating: 4,
+    stock: 10,
   },
   {
     _id: uuid(),
@@ -23,8 +28,11 @@ export const products = [
     price: '70,000',
     cost: 70000,
     prevPrice: '77,777',
+    processor: processors[Math.floor(Math.random() * processors.length)],
     img: 'https://res.cloudinary.com/iambizan/image/upload/v1648316235/images/iphone11_zujv6i.jpg',
-    onSale: false,
+    fastDeliveryOnly: false,
+    rating: 5,
+    stock: 9,
   },
   {
     _id: uuid(),
@@ -33,8 +41,11 @@ export const products = [
     price: '80,000',
     cost: 80000,
     prevPrice: '88,888',
+    processor: processors[Math.floor(Math.random() * processors.length)],
     img: 'https://res.cloudinary.com/iambizan/image/upload/v1648316236/images/iphone11white_rdrdck.jpg',
-    onSale: true,
+    fastDeliveryOnly: true,
+    rating: 3,
+    stock: 5,
   },
   {
     _id: uuid(),
@@ -43,8 +54,11 @@ export const products = [
     price: '65,000',
     cost: 65000,
     prevPrice: '72,222',
+    processor: processors[Math.floor(Math.random() * processors.length)],
     img: 'https://res.cloudinary.com/iambizan/image/upload/v1648316235/images/coderspecial_hg5l5x.jpg',
-    onSale: true,
+    fastDeliveryOnly: true,
+    rating: 5,
+    stock: 10,
   },
   {
     _id: uuid(),
@@ -53,8 +67,11 @@ export const products = [
     price: '78,000',
     cost: 78000,
     prevPrice: '85,555',
+    processor: processors[Math.floor(Math.random() * processors.length)],
     img: 'https://res.cloudinary.com/iambizan/image/upload/v1648316235/images/iceblue_o0sn7f.jpg',
-    onSale: false,
+    fastDeliveryOnly: false,
+    rating: 2,
+    stock: 6,
   },
   {
     _id: uuid(),
@@ -63,8 +80,11 @@ export const products = [
     price: '90,000',
     cost: 90000,
     prevPrice: '1,00,000',
+    processor: processors[Math.floor(Math.random() * processors.length)],
     img: 'https://res.cloudinary.com/iambizan/image/upload/v1648316236/images/skyblue_kepasu.jpg',
-    onSale: true,
+    fastDeliveryOnly: true,
+    rating: 1,
+    stock: 3,
   },
   {
     _id: uuid(),
@@ -73,7 +93,11 @@ export const products = [
     price: '50,000',
     cost: 50000,
     prevPrice: '57,777',
+    processor: processors[Math.floor(Math.random() * processors.length)],
     img: 'https://res.cloudinary.com/iambizan/image/upload/v1648403140/images/hooliAviato_rrp1hq.jpg',
+    fastDeliveryOnly: false,
+    rating: 4,
+    stock: 0,
   },
   {
     _id: uuid(),
@@ -82,7 +106,11 @@ export const products = [
     price: '30,000',
     cost: 30000,
     prevPrice: '37,777',
+    processor: processors[Math.floor(Math.random() * processors.length)],
     img: 'https://res.cloudinary.com/iambizan/image/upload/v1648403148/images/hoolipied_m3xwyu.jpg',
+    fastDeliveryOnly: true,
+    rating: 3,
+    stock: 0,
   },
   // {
   //   _id: uuid(),
