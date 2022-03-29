@@ -24,12 +24,14 @@ const VerticalCard = ({ product }) => {
     img,
     title,
     subtitle,
-    price,
+    cost,
     prevPrice,
     stock,
     fastDeliveryOnly,
     rating,
   } = product
+
+  const price = cost.toLocaleString()
   return (
     <div className="card card-shadow">
       {fastDeliveryOnly && (
@@ -94,7 +96,7 @@ VerticalCard.propTypes = {
     img: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     subtitle: PropTypes.string.isRequired,
-    price: PropTypes.string.isRequired,
+    cost: PropTypes.number.isRequired,
     prevPrice: PropTypes.string.isRequired,
     stock: PropTypes.number.isRequired,
     fastDeliveryOnly: PropTypes.bool.isRequired,
