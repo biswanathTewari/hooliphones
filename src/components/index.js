@@ -6,6 +6,7 @@ import { TextInput } from './Form'
 import Slider from './Slider'
 import VerticalCard from './VerticalCard'
 import Loader from './Loader'
+import HorizontalCard from './HorizontalCard'
 
 export {
   Navbar,
@@ -16,4 +17,5 @@ export {
   Slider,
   VerticalCard,
   Loader,
+  HorizontalCard,
 }

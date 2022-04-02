@@ -5,7 +5,7 @@ import './styles.scss'
 
 const RatingDisplay = ({ rating }) => {
   return (
-    <div className="card-rating">
+    <div className="card-rating my-1">
       {[...Array(5)].map((_, index) => (
         <>
           {index <= rating - 1 ? (
@@ -19,7 +19,7 @@ const RatingDisplay = ({ rating }) => {
   )
 }
 
-const VerticalCard = ({ product }) => {
+const VerticalCard = ({ product, addToCart }) => {
   const {
     img,
     title,
@@ -32,6 +32,12 @@ const VerticalCard = ({ product }) => {
   } = product
 
   const price = cost.toLocaleString()
+
+  const handleAddToCart = e => {
+    e.preventDefault()
+    addToCart(product)
+  }
+
   return (
     <div className="card card-shadow">
       {fastDeliveryOnly && (
@@ -69,7 +75,11 @@ const VerticalCard = ({ product }) => {
           <RatingDisplay rating={rating} />
         </div>
         <div className="card-btns">
-          <a href="#" className="btn btn-primary mg-right1">
+          <a
+            href="#"
+            className="btn btn-primary mg-right1"
+            onClick={handleAddToCart}
+          >
             Add to cart
           </a>
           <a href="#" className="btn btn-secondary">
@@ -102,6 +112,7 @@ VerticalCard.propTypes = {
     fastDeliveryOnly: PropTypes.bool.isRequired,
     rating: PropTypes.number.isRequired,
   }),
+  addToCart: PropTypes.func.isRequired,
 }
 
 export default VerticalCard

@@ -1,6 +1,6 @@
 import React from 'react'
-import { getProductService } from '../../services'
 
+import { getProductService, addToCartService } from '../../services'
 import { Navbar, Footer, Filter, VerticalCard, Loader } from '../../components'
 import { useGlobalState, useProducts, actions } from '../../store'
 import './styles.scss'
@@ -88,10 +88,6 @@ const Shop = () => {
     getProducts()
   }, [getProducts])
 
-  // React.useEffect(() => {
-  //   console.log('filters', filters)
-  // }, [filters])
-
   const sortedProducts = React.useMemo(() => {
     return sortProducts(products, filters)
   }, [products, filters])
@@ -100,6 +96,21 @@ const Shop = () => {
     () => filterProducts(sortedProducts, filters),
     [filters, sortedProducts],
   )
+
+  const handleAddToCart = async product => {
+    try {
+      await addToCartService(product)
+      showToast({
+        message: `${product.title} added to cart`,
+        type: 'success',
+      })
+    } catch {
+      showToast({
+        message: 'Oops! something went wrong, unable to add to cart :(',
+        type: 'failed',
+      })
+    }
+  }
 
   return (
     <>
@@ -134,7 +145,13 @@ const Shop = () => {
             <section className="product-list d-flex">
               {filteredProducts &&
                 filteredProducts.map(product => {
-                  return <VerticalCard key={product.id} product={product} />
+                  return (
+                    <VerticalCard
+                      key={product.id}
+                      product={product}
+                      addToCart={handleAddToCart}
+                    />
+                  )
                 })}
             </section>
           </article>
