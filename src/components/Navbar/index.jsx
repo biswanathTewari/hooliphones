@@ -115,6 +115,15 @@ const Index = ({ hasSearch }) => {
           isBtn={false}
           icon="fa-shopping-cart"
         />
+
+        <NavLink
+          to={'/wishlist'}
+          text="wishlist"
+          toggleNav={toggleNav}
+          isOpen={isOpen}
+          isBtn={false}
+          icon="fa-heart"
+        />
         {!isLoggedIn ? (
           <NavLink
             to={'/login'}

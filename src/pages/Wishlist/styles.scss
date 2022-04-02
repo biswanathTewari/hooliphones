@@ -1,0 +1,32 @@
+@import '../../sass/index.scss';
+
+.wishlist-container {
+  min-height: 50vh;
+
+  .wishlist-list-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+
+  .wishlist-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 3rem 1rem;
+
+    @include respond(phone) {
+      justify-content: center;
+    }
+  }
+
+  .empty-wishlist {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    min-height: 70vh;
+  }
+}
