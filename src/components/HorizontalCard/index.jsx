@@ -48,7 +48,7 @@ const HorizontalCard = ({ product, removeItem, updateQty }) => {
         </div>
         <div className="card-btns">
           <a href="#" className="btn btn-primary mg-right1">
-            wishlist
+            save
           </a>
           <a
             href="#"

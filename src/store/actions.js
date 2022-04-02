@@ -21,4 +21,9 @@ export const actions = {
   addToCart: 'ADD_TO_CART',
   removeFromCart: 'REMOVE_FROM_CART',
   updateCart: 'UPDATE_CART',
+  fetchWishlist: 'FETCH_WISHLIST',
+  fetchWishlistSuccess: 'FETCH_WISHLIST_SUCCESS',
+  fetchWishlistFailure: 'FETCH_WISHLIST_FAILURE',
+  addToWishlist: 'ADD_TO_WISHLIST',
+  removeFromWishlist: 'REMOVE_FROM_WISHLIST',
 }

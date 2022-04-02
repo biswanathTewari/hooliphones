@@ -9,6 +9,7 @@ import {
   SignupPage,
   ShopPage,
   CartPage,
+  WishlistPage,
 } from '../pages'
 
 const Navigation = () => {
@@ -22,6 +23,14 @@ const Navigation = () => {
         element={
           <AuthRoute>
             <CartPage />
+          </AuthRoute>
+        }
+      />
+      <Route
+        path="/wishlist"
+        element={
+          <AuthRoute>
+            <WishlistPage />
           </AuthRoute>
         }
       />

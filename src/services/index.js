@@ -7,6 +7,11 @@ import {
   removeFromCartService,
   updateCartService,
 } from './cart.service'
+import {
+  getWishlistService,
+  addToWishlistService,
+  removeFromWishlistService,
+} from './wishlist.service'
 
 export {
   callApi,
@@ -17,4 +22,7 @@ export {
   addToCartService,
   removeFromCartService,
   updateCartService,
+  getWishlistService,
+  addToWishlistService,
+  removeFromWishlistService,
 }
