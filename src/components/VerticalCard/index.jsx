@@ -1,6 +1,8 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
+import { useCart } from '../../store'
 import './styles.scss'
 
 const RatingDisplay = ({ rating }) => {
@@ -21,6 +23,7 @@ const RatingDisplay = ({ rating }) => {
 
 const VerticalCard = ({ product, addToCart }) => {
   const {
+    _id,
     img,
     title,
     subtitle,
@@ -30,13 +33,27 @@ const VerticalCard = ({ product, addToCart }) => {
     fastDeliveryOnly,
     rating,
   } = product
-
+  const { products: cartItems } = useCart()
   const price = cost.toLocaleString()
+  const [isInCart, setIsInCart] = React.useState(false)
 
-  const handleAddToCart = e => {
+  const handleAddToCart = async e => {
     e.preventDefault()
-    addToCart(product)
+    const res = await addToCart(product)
+    if (res) setIsInCart(true)
   }
+
+  const checkIfInCart = () => {
+    if (cartItems.length === 0) return
+    const cartItem = cartItems.find(item => item._id === _id)
+    if (cartItem) {
+      setIsInCart(true)
+    }
+  }
+
+  React.useEffect(() => {
+    checkIfInCart()
+  }, [])
 
   return (
     <div className="card card-shadow">
@@ -75,13 +92,19 @@ const VerticalCard = ({ product, addToCart }) => {
           <RatingDisplay rating={rating} />
         </div>
         <div className="card-btns">
-          <a
-            href="#"
-            className="btn btn-primary mg-right1"
-            onClick={handleAddToCart}
-          >
-            Add to cart
-          </a>
+          {isInCart ? (
+            <Link to={`/cart`} className="btn btn-primary mg-right1">
+              View cart
+            </Link>
+          ) : (
+            <a
+              href="#"
+              className="btn btn-primary mg-right1"
+              onClick={handleAddToCart}
+            >
+              Add to cart
+            </a>
+          )}
           <a href="#" className="btn btn-secondary">
             Buy now
           </a>
@@ -103,6 +126,7 @@ RatingDisplay.propTypes = {
 
 VerticalCard.propTypes = {
   product: PropTypes.shape({
+    _id: PropTypes.string.isRequired,
     img: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     subtitle: PropTypes.string.isRequired,

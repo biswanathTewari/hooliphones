@@ -2,7 +2,7 @@ import React from 'react'
 
 import { getProductService, addToCartService } from '../../services'
 import { Navbar, Footer, Filter, VerticalCard, Loader } from '../../components'
-import { useGlobalState, useProducts, actions } from '../../store'
+import { useGlobalState, useProducts, useUser, actions } from '../../store'
 import './styles.scss'
 
 const sortProducts = (prods, filters) => {
@@ -62,6 +62,7 @@ const filterProducts = (sortedProducts, filters) => {
 
 const Shop = () => {
   const { showToast } = useGlobalState()
+  const { isLoggedIn } = useUser()
   const { isLoading, filters, products, dispatchProducts } = useProducts()
   const [filterToggle, setFilterToggle] = React.useState(false)
 
@@ -98,17 +99,27 @@ const Shop = () => {
   )
 
   const handleAddToCart = async product => {
+    if (!isLoggedIn) {
+      showToast({
+        message: 'Please login to add to cart',
+        type: 'failed',
+      })
+      return false
+    }
+
     try {
       await addToCartService(product)
       showToast({
         message: `${product.title} added to cart`,
         type: 'success',
       })
+      return true
     } catch {
       showToast({
         message: 'Oops! something went wrong, unable to add to cart :(',
         type: 'failed',
       })
+      return false
     }
   }
 
