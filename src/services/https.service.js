@@ -2,14 +2,15 @@ import axios from 'axios'
 import PropTypes from 'prop-types'
 
 import { Storage } from '../utils'
-export function callApi(
+export async function callApi(
   endpoint,
   { method, body, headers, params } = { method: 'GET' },
 ) {
   let authToken
-  let auth = Storage.get('authToken')
+  let auth = await Storage.get('authToken')
 
   if (auth) authToken = auth
+
   return axios({
     method: method,
     url: endpoint,
@@ -17,7 +18,7 @@ export function callApi(
     params: params,
     headers: {
       'Content-Type': 'application/json',
-      Authorization: authToken,
+      authorization: authToken,
       Accept: 'application/json',
       ...headers,
     },

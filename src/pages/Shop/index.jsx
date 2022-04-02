@@ -1,8 +1,8 @@
 import React from 'react'
-import { getProductService } from '../../services'
 
+import { getProductService, addToCartService } from '../../services'
 import { Navbar, Footer, Filter, VerticalCard, Loader } from '../../components'
-import { useGlobalState, useProducts, actions } from '../../store'
+import { useGlobalState, useProducts, useUser, actions } from '../../store'
 import './styles.scss'
 
 const sortProducts = (prods, filters) => {
@@ -62,6 +62,7 @@ const filterProducts = (sortedProducts, filters) => {
 
 const Shop = () => {
   const { showToast } = useGlobalState()
+  const { isLoggedIn } = useUser()
   const { isLoading, filters, products, dispatchProducts } = useProducts()
   const [filterToggle, setFilterToggle] = React.useState(false)
 
@@ -88,10 +89,6 @@ const Shop = () => {
     getProducts()
   }, [getProducts])
 
-  // React.useEffect(() => {
-  //   console.log('filters', filters)
-  // }, [filters])
-
   const sortedProducts = React.useMemo(() => {
     return sortProducts(products, filters)
   }, [products, filters])
@@ -100,6 +97,31 @@ const Shop = () => {
     () => filterProducts(sortedProducts, filters),
     [filters, sortedProducts],
   )
+
+  const handleAddToCart = async product => {
+    if (!isLoggedIn) {
+      showToast({
+        message: 'Please login to add to cart',
+        type: 'failed',
+      })
+      return false
+    }
+
+    try {
+      await addToCartService(product)
+      showToast({
+        message: `${product.title} added to cart`,
+        type: 'success',
+      })
+      return true
+    } catch {
+      showToast({
+        message: 'Oops! something went wrong, unable to add to cart :(',
+        type: 'failed',
+      })
+      return false
+    }
+  }
 
   return (
     <>
@@ -134,7 +156,13 @@ const Shop = () => {
             <section className="product-list d-flex">
               {filteredProducts &&
                 filteredProducts.map(product => {
-                  return <VerticalCard key={product.id} product={product} />
+                  return (
+                    <VerticalCard
+                      key={product.id}
+                      product={product}
+                      addToCart={handleAddToCart}
+                    />
+                  )
                 })}
             </section>
           </article>

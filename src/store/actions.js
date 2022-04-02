@@ -15,4 +15,10 @@ export const actions = {
   setRating: 'SET_RATING',
   setSearch: 'SET_SEARCH',
   resetFilters: 'CLEAR_FILTER',
+  fetchCart: 'FETCH_CART',
+  fetchCartSuccess: 'FETCH_CART_SUCCESS',
+  fetchCartFailure: 'FETCH_CART_FAILURE',
+  addToCart: 'ADD_TO_CART',
+  removeFromCart: 'REMOVE_FROM_CART',
+  updateCart: 'UPDATE_CART',
 }

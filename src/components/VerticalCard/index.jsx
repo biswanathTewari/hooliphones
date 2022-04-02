@@ -1,11 +1,13 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
+import { useCart } from '../../store'
 import './styles.scss'
 
 const RatingDisplay = ({ rating }) => {
   return (
-    <div className="card-rating">
+    <div className="card-rating my-1">
       {[...Array(5)].map((_, index) => (
         <>
           {index <= rating - 1 ? (
@@ -19,8 +21,9 @@ const RatingDisplay = ({ rating }) => {
   )
 }
 
-const VerticalCard = ({ product }) => {
+const VerticalCard = ({ product, addToCart }) => {
   const {
+    _id,
     img,
     title,
     subtitle,
@@ -30,8 +33,28 @@ const VerticalCard = ({ product }) => {
     fastDeliveryOnly,
     rating,
   } = product
-
+  const { products: cartItems } = useCart()
   const price = cost.toLocaleString()
+  const [isInCart, setIsInCart] = React.useState(false)
+
+  const handleAddToCart = async e => {
+    e.preventDefault()
+    const res = await addToCart(product)
+    if (res) setIsInCart(true)
+  }
+
+  const checkIfInCart = () => {
+    if (cartItems.length === 0) return
+    const cartItem = cartItems.find(item => item._id === _id)
+    if (cartItem) {
+      setIsInCart(true)
+    }
+  }
+
+  React.useEffect(() => {
+    checkIfInCart()
+  }, [])
+
   return (
     <div className="card card-shadow">
       {fastDeliveryOnly && (
@@ -69,9 +92,19 @@ const VerticalCard = ({ product }) => {
           <RatingDisplay rating={rating} />
         </div>
         <div className="card-btns">
-          <a href="#" className="btn btn-primary mg-right1">
-            Add to cart
-          </a>
+          {isInCart ? (
+            <Link to={`/cart`} className="btn btn-primary mg-right1">
+              View cart
+            </Link>
+          ) : (
+            <a
+              href="#"
+              className="btn btn-primary mg-right1"
+              onClick={handleAddToCart}
+            >
+              Add to cart
+            </a>
+          )}
           <a href="#" className="btn btn-secondary">
             Buy now
           </a>
@@ -93,6 +126,7 @@ RatingDisplay.propTypes = {
 
 VerticalCard.propTypes = {
   product: PropTypes.shape({
+    _id: PropTypes.string.isRequired,
     img: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     subtitle: PropTypes.string.isRequired,
@@ -102,6 +136,7 @@ VerticalCard.propTypes = {
     fastDeliveryOnly: PropTypes.bool.isRequired,
     rating: PropTypes.number.isRequired,
   }),
+  addToCart: PropTypes.func.isRequired,
 }
 
 export default VerticalCard

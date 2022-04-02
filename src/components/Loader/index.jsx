@@ -13,7 +13,7 @@ const defaultOptions = {
 const Loader = () => {
   return (
     <div className="loader-container">
-      <Lottie options={defaultOptions} height="90%" speed={'1.5'} />
+      <Lottie options={defaultOptions} height="90%" speed={1.5} />
     </div>
   )
 }
