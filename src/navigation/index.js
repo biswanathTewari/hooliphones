@@ -17,15 +17,15 @@ const Navigation = () => {
       <Route path="/" element={<LandingPage />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/signup" element={<SignupPage />} />
-      <Route path="/cart" element={<CartPage />} />
       <Route
-        path="/shop"
+        path="/cart"
         element={
           <AuthRoute>
-            <ShopPage />
+            <CartPage />
           </AuthRoute>
         }
       />
+      <Route path="/shop" element={<ShopPage />} />
       <Route path="mockapi" element={<Mockman />} />
     </Routes>
   )
