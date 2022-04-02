@@ -1,0 +1,56 @@
+.cart-card {
+  background-color: #f8f8f8;
+  margin-bottom: 1rem;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.cart-zoom-wrapper {
+  position: relative;
+  max-width: 40rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.zoom {
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+}
+
+.zoom:hover {
+  transform: scale(1.2);
+}
+
+.quantity {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+}
+
+.quantity > input {
+  margin: 0 1rem;
+  text-align: center;
+  width: 1.5rem;
+  height: 1.25rem;
+  border-color: var(--text-color-dark);
+  border-radius: 0.25rem;
+}
+
+.btn-circle {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  background-color: var(--secondary-color-dark);
+  color: var(--text-color-dark);
+  font-size: 1rem;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.2s ease-in-out;
+}
+
+.flex-wrap {
+  justify-content: flex-start;
+}
