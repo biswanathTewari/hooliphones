@@ -1,6 +1,6 @@
 import { callApi } from './https.service'
 import { signUpService, loginService } from './auth.service'
-import { getProductService } from './shop.service'
+import { getProductService, getProductByIdService } from './shop.service'
 import {
   getCartItemsService,
   addToCartService,
@@ -18,6 +18,7 @@ export {
   signUpService,
   loginService,
   getProductService,
+  getProductByIdService,
   getCartItemsService,
   addToCartService,
   removeFromCartService,

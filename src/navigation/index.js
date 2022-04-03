@@ -10,6 +10,7 @@ import {
   ShopPage,
   CartPage,
   WishlistPage,
+  ProductPage,
 } from '../pages'
 
 const Navigation = () => {
@@ -34,6 +35,7 @@ const Navigation = () => {
           </AuthRoute>
         }
       />
+      <Route path="/product/:id" element={<ProductPage />} />
       <Route path="/shop" element={<ShopPage />} />
       <Route path="mockapi" element={<Mockman />} />
     </Routes>

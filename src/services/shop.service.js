@@ -6,3 +6,10 @@ export async function getProductService() {
   })
   return response
 }
+
+export async function getProductByIdService(id) {
+  const response = await callApi(`/api/products/${id}`, {
+    method: 'GET',
+  })
+  return response
+}

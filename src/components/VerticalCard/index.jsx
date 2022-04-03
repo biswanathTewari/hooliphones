@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
 import {
@@ -48,6 +48,7 @@ const VerticalCard = ({ product }) => {
   const { products: wishlist, dispatchWishlist } = useWishlist()
   const { isLoggedIn } = useUser()
   const { showToast } = useGlobalState()
+  const navigate = useNavigate()
   const price = cost.toLocaleString()
   const [isInCart, setIsInCart] = React.useState(false)
   const [isInWishlist, setIsInWishlist] = React.useState(false)
@@ -140,6 +141,10 @@ const VerticalCard = ({ product }) => {
     checkIfInWishlist()
   }, [])
 
+  const navigateToDetails = () => {
+    navigate(`/product/${_id}`)
+  }
+
   return (
     <div className="card card-shadow">
       {fastDeliveryOnly && (
@@ -149,7 +154,7 @@ const VerticalCard = ({ product }) => {
           </p>
         </div>
       )}
-      <div className="zoom-wrapper">
+      <div className="zoom-wrapper" onClick={navigateToDetails}>
         <img
           src={img}
           alt="item"
@@ -204,9 +209,9 @@ const VerticalCard = ({ product }) => {
               Add to cart
             </a>
           )}
-          <a href="#" className="btn btn-secondary">
+          <Link to={`/product/${_id}`} className="btn btn-secondary">
             Buy now
-          </a>
+          </Link>
         </div>
       </div>
 
