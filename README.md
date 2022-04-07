@@ -39,3 +39,9 @@ https://hoooli.netlify.app/
 - single product page
 - loading and alerts
 - user profile
+
+## Preview
+
+https://user-images.githubusercontent.com/40662234/162269500-beb28a31-929b-4464-bd35-dbcb71a688fb.mp4
+
+
