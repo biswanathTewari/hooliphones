@@ -1,0 +1,76 @@
+@import '../../sass/index.scss';
+
+.profile {
+  display: flex;
+  flex-direction: column;
+  &__pic {
+    height: 12rem;
+    width: 12rem;
+    align-self: center;
+  }
+
+  &__details {
+    margin-top: 1rem;
+    align-self: center;
+    text-align: center;
+  }
+
+  &__info {
+    margin-top: 2rem;
+    .section__container {
+      display: flex;
+      justify-content: center;
+      .profile__section {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        padding: 1rem 3rem;
+        font-size: 1rem;
+        cursor: pointer;
+
+        &:hover {
+          box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+        }
+
+        @include respond(phone) {
+          padding: 0.5rem 1.5rem;
+          font-size: 1.25rem;
+        }
+      }
+
+      .profile__section--active {
+        background-color: var(--text-color-dark);
+        color: var(--secondary-color-dark);
+
+        &:hover {
+          box-shadow: none;
+        }
+      }
+    }
+
+    .profile__section--conatiner {
+      min-height: 30vh;
+      width: 100%;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: var(--text-color-dark);
+
+      @include respond(phone) {
+        padding: 1rem;
+      }
+
+      .profile__section--logout {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        i {
+          font-size: 5rem;
+          margin: 1rem 0;
+        }
+      }
+    }
+  }
+}

@@ -5,6 +5,7 @@ import ShopPage from './Shop'
 import CartPage from './Cart'
 import WishlistPage from './Wishlist'
 import ProductPage from './Product'
+import ProfilePage from './Profile'
 
 export {
   LandingPage,
@@ -14,4 +15,5 @@ export {
   CartPage,
   WishlistPage,
   ProductPage,
+  ProfilePage,
 }
