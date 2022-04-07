@@ -138,7 +138,8 @@ const Index = ({ hasSearch }) => {
             text="profile"
             toggleNav={toggleNav}
             isOpen={isOpen}
-            isBtn={true}
+            isBtn={false}
+            icon="fa-user-alt"
           />
         )}
       </ul>

@@ -5,6 +5,7 @@ import { Navbar, Footer, TextInput } from '../../components'
 import { useAuthForm } from '../../hooks'
 import { actions, useGlobalState, useUser } from '../../store'
 import { loginService } from '../../services'
+import { Storage } from '../../utils'
 import './styles.scss'
 
 const Login = () => {
@@ -26,6 +27,7 @@ const Login = () => {
     try {
       const response = await loginService(email, password)
       dispatchUser({ type: actions.login, payload: response })
+      await Storage.store('userDetails', response)
       showToast({
         message: 'Success!',
         type: 'success',

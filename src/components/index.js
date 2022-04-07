@@ -7,6 +7,8 @@ import Slider from './Slider'
 import VerticalCard from './VerticalCard'
 import Loader from './Loader'
 import HorizontalCard from './HorizontalCard'
+import Address from './Address'
+import Orders from './Orders'
 
 export {
   Navbar,
@@ -18,4 +20,6 @@ export {
   VerticalCard,
   Loader,
   HorizontalCard,
+  Address,
+  Orders,
 }

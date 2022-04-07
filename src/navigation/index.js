@@ -11,9 +11,27 @@ import {
   CartPage,
   WishlistPage,
   ProductPage,
+  ProfilePage,
 } from '../pages'
+import { useUser, actions } from '../store'
+import { Storage } from '../utils'
 
 const Navigation = () => {
+  const { dispatchUser } = useUser()
+
+  // rehydrate user from local storage
+  const rehydrateUser = async () => {
+    const token = await Storage.get('authToken')
+    if (token) {
+      const userDetails = await Storage.get('userDetails')
+      dispatchUser({ type: actions.login, payload: userDetails })
+    }
+  }
+
+  React.useEffect(() => {
+    rehydrateUser()
+  }, [])
+
   return (
     <Routes>
       <Route path="/" element={<LandingPage />} />
@@ -32,6 +50,14 @@ const Navigation = () => {
         element={
           <AuthRoute>
             <WishlistPage />
+          </AuthRoute>
+        }
+      />
+      <Route
+        path="/profile"
+        element={
+          <AuthRoute>
+            <ProfilePage />
           </AuthRoute>
         }
       />
