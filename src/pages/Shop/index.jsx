@@ -1,8 +1,10 @@
 import React from 'react'
+import { motion } from 'framer-motion'
 
 import { getProductService } from '../../services'
 import { Navbar, Footer, Filter, VerticalCard, Loader } from '../../components'
 import { useGlobalState, useProducts, actions } from '../../store'
+import { fadingParent } from '../../utils'
 import './styles.scss'
 
 const sortProducts = (prods, filters) => {
@@ -16,6 +18,7 @@ const sortProducts = (prods, filters) => {
 
 const filterProducts = (sortedProducts, filters) => {
   let tempArray = sortedProducts
+  let tempCategory = []
 
   // filter by price
   tempArray = tempArray.filter(product => {
@@ -25,17 +28,22 @@ const filterProducts = (sortedProducts, filters) => {
   // filter by processor
   if (filters.processors.modified) {
     if (filters.processors.hooli)
-      tempArray = tempArray.filter(product =>
+      tempCategory = tempArray.filter(product =>
         product.processor.includes('hooli'),
       )
     if (filters.processors.snapdragon)
-      tempArray = tempArray.filter(product =>
-        product.processor.includes('snapdragon'),
-      )
+      tempCategory = [
+        ...tempCategory,
+        ...tempArray.filter(product =>
+          product.processor.includes('snapdragon'),
+        ),
+      ]
     if (filters.processors.mediatek)
-      tempArray = tempArray.filter(product =>
-        product.processor.includes('mediatek'),
-      )
+      tempCategory = [
+        ...tempCategory,
+        ...tempArray.filter(product => product.processor.includes('mediatek')),
+      ]
+    tempArray = tempCategory
   }
 
   // filter by rating
@@ -98,7 +106,12 @@ const Shop = () => {
   )
 
   return (
-    <>
+    <motion.div
+      variants={fadingParent}
+      initial="hidden"
+      animate="show"
+      exit="exit"
+    >
       <Navbar hasSearch={true} />
       {isLoading ? (
         <Loader />
@@ -138,7 +151,7 @@ const Shop = () => {
         </main>
       )}
       <Footer />
-    </>
+    </motion.div>
   )
 }
 

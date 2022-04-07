@@ -9,6 +9,7 @@ import Loader from './Loader'
 import HorizontalCard from './HorizontalCard'
 import Address from './Address'
 import Orders from './Orders'
+import Wave from './Wave'
 
 export {
   Navbar,
@@ -22,4 +23,5 @@ export {
   HorizontalCard,
   Address,
   Orders,
+  Wave,
 }

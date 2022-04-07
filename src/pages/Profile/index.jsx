@@ -1,11 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { useNavigate } from 'react-router-dom'
+import { motion } from 'framer-motion'
 
 import { Navbar, Footer, Address, Orders } from '../../components'
 import dp from '../../assets/images/dinesh.png'
 import { useUser, useGlobalState, actions } from '../../store'
 import { Storage } from '../../utils'
+import { fadingParent, photoAnim } from '../../utils'
 import './styles.scss'
 
 const Section = ({ title, icon, tab, setTab }) => {
@@ -43,10 +45,20 @@ const Profile = () => {
   }
 
   return (
-    <>
+    <motion.div
+      variants={fadingParent}
+      initial="hidden"
+      animate="show"
+      exit="exit"
+    >
       <Navbar />
       <div className="profile padding-default">
-        <img src={dp} alt="profile" className="responsive-img profile__pic" />
+        <motion.img
+          src={dp}
+          alt="profile"
+          className="responsive-img profile__pic"
+          variants={photoAnim}
+        />
         <div className="profile__details">
           <h3 className="h6">
             {user.firstName} {user.lastName}
@@ -88,7 +100,7 @@ const Profile = () => {
         </div>
       </div>
       <Footer />
-    </>
+    </motion.div>
   )
 }
 

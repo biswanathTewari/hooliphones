@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import PropTypes from 'prop-types'
+import { motion } from 'framer-motion'
 
 import {
   useCart,
@@ -14,6 +15,8 @@ import {
   addToWishlistService,
   removeFromWishlistService,
 } from '../../services'
+import { useScroll } from '../../hooks'
+import { scrollReveal } from '../../utils'
 import './styles.scss'
 
 const RatingDisplay = ({ rating }) => {
@@ -52,6 +55,7 @@ const VerticalCard = ({ product }) => {
   const price = cost.toLocaleString()
   const [isInCart, setIsInCart] = React.useState(false)
   const [isInWishlist, setIsInWishlist] = React.useState(false)
+  const [element, controls] = useScroll()
 
   const handleAddToCart = async e => {
     e.preventDefault()
@@ -146,7 +150,13 @@ const VerticalCard = ({ product }) => {
   }
 
   return (
-    <div className="card card-shadow">
+    <motion.div
+      className="card card-shadow"
+      ref={element}
+      variants={scrollReveal}
+      animate={controls}
+      initial="hidden"
+    >
       {fastDeliveryOnly && (
         <div className="card-badge">
           <p className="text-sm">
@@ -220,7 +230,7 @@ const VerticalCard = ({ product }) => {
           <p className="h6">Out of stock</p>
         </div>
       )}
-    </div>
+    </motion.div>
   )
 }
 

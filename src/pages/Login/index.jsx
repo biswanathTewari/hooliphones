@@ -14,6 +14,7 @@ const Login = () => {
     error,
     onBlurHandler,
     onChangeHandler,
+    hackHandler,
     validateForm,
     resetForm,
   } = useAuthForm('', true)
@@ -48,10 +49,19 @@ const Login = () => {
       loginHandler(creds.email, creds.password)
     } else {
       showToast({
-        message: 'Bhai kya kar raha hai tu?',
+        message: 'Bhai kya kar raha hai tu? hack kar',
         type: 'failed',
       })
     }
+  }
+
+  const htmlHacker = e => {
+    e.preventDefault()
+    hackHandler()
+    showToast({
+      message: 'Hacked! press Login',
+      type: 'success',
+    })
   }
 
   if (isLoggedIn) return <Navigate to={'/'} replace />
@@ -110,6 +120,13 @@ const Login = () => {
               onClick={onSubmitHandler}
             >
               <h1 className="text-md text-700">Login</h1>
+            </div>
+            <div
+              type="submit"
+              className="btn btn-primary my-1"
+              onClick={htmlHacker}
+            >
+              <h1 className="text-md text-700">Hack</h1>
             </div>
           </form>
           <div className="sign-up">

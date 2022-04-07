@@ -1,11 +1,16 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { motion } from 'framer-motion'
 
+import { slider } from '../../utils'
 import './styles.scss'
 
 const HorizontalCard = ({ product, removeItem, updateQty }) => {
   return (
-    <div className="cart-card card-horizontal card-shadow">
+    <motion.div
+      className="cart-card card-horizontal card-shadow"
+      variants={slider}
+    >
       <div className="cart-zoom-wrapper">
         <img
           src={product.img}
@@ -59,7 +64,7 @@ const HorizontalCard = ({ product, removeItem, updateQty }) => {
           </a>
         </div>
       </div>
-    </div>
+    </motion.div>
   )
 }
 
