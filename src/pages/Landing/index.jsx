@@ -1,26 +1,38 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { motion } from 'framer-motion'
 
-import { Navbar, Footer } from '../../components'
+import { Navbar, Footer, Wave } from '../../components'
 import { Hero, Iphone11 } from '../../assets/images'
+import { photoAnim, pageAnimation, fade, scrollReveal } from '../../utils'
+import { useScroll } from '../../hooks'
 import './styles.scss'
 
 const Index = () => {
+  const [element, controls] = useScroll()
   return (
-    <div className="App">
+    <motion.div
+      variants={pageAnimation}
+      initial="hidden"
+      animate="show"
+      exit="exit"
+      className="landing"
+    >
       <Navbar />
       <main>
         <article className="container intro">
           <section className="intro-text">
-            <h1 className="h2">hooli phones</h1>
-            <h1 className="text-lg text-300 my-2">
+            <motion.h1 className="h2" variants={fade}>
+              hooli phones
+            </motion.h1>
+            <motion.h1 className="text-lg text-300 my-2" variants={fade}>
               {` We're more than the chat, mail, search and phone that's crowned
               Hooli as the`}
-              <h1 className="text-lg text-600">
+              <motion.h1 className="text-lg text-600" variants={fade}>
                 most respected brand in the world.
-              </h1>
-            </h1>
-            <div className="intro-btns">
+              </motion.h1>
+            </motion.h1>
+            <motion.div className="intro-btns" variants={fade}>
               <Link to="/shop" className="btn btn-primary mg-r-1">
                 shop now
               </Link>
@@ -28,14 +40,27 @@ const Index = () => {
                 {' '}
                 pre-order{' '}
               </a>
-            </div>
+            </motion.div>
           </section>
           <section className="illustration">
-            <img src={Hero} alt="Illustration" className="img-responsive" />
+            <motion.img
+              src={Hero}
+              alt="Illustration"
+              className="img-responsive"
+              variants={photoAnim}
+            />
           </section>
+          <Wave />
         </article>
 
-        <article className="container promo-container" id="promo">
+        <motion.article
+          className="container promo-container"
+          id="promo"
+          ref={element}
+          variants={scrollReveal}
+          animate={controls}
+          initial="hidden"
+        >
           <div className="card-horizontal promo-card card-shadow">
             <img
               src={Iphone11}
@@ -90,10 +115,10 @@ const Index = () => {
               </div>
             </div>
           </div>
-        </article>
+        </motion.article>
       </main>
       <Footer />
-    </div>
+    </motion.div>
   )
 }
 

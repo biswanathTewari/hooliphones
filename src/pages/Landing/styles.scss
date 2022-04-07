@@ -1,5 +1,9 @@
 @import '../../sass/index.scss';
 
+.landing {
+  overflow-x: hidden;
+}
+
 .container {
   display: flex;
   justify-content: space-between;
@@ -28,12 +32,14 @@
 .illustration {
   width: 40rem;
   padding: 0 2rem;
+  z-index: 1;
 }
 
 .intro-btns {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
+  z-index: 1;
 }
 
 .install-text {
