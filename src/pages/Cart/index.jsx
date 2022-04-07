@@ -1,4 +1,5 @@
 import React from 'react'
+import { motion } from 'framer-motion'
 
 import { Navbar, Footer, HorizontalCard, Loader } from '../../components'
 import {
@@ -8,6 +9,7 @@ import {
 } from '../../services'
 import { useCart, useGlobalState, actions } from '../../store'
 import animation from '../../assets/gifs/emptyCart.gif'
+import { sliderHolder, fadingParent } from '../../utils'
 import './styles.scss'
 
 const Cart = () => {
@@ -85,7 +87,13 @@ const Cart = () => {
   }
 
   return (
-    <div className="cart-page">
+    <motion.div
+      className="cart-page"
+      variants={fadingParent}
+      initial="hidden"
+      animate="show"
+      exit="exit"
+    >
       <Navbar />
       <main className="cart-container">
         {isLoading ? (
@@ -96,7 +104,10 @@ const Cart = () => {
             <article className="cart">
               {products && products.length ? (
                 <>
-                  <section className="product-section">
+                  <motion.section
+                    className="product-section"
+                    variants={sliderHolder}
+                  >
                     {products.map(product => (
                       <HorizontalCard
                         key={product.id}
@@ -105,7 +116,7 @@ const Cart = () => {
                         updateQty={updateCartHandler}
                       />
                     ))}
-                  </section>
+                  </motion.section>
 
                   <section className="bill-section">
                     <div className="bill card-shadow">
@@ -159,7 +170,7 @@ const Cart = () => {
       </main>
 
       <Footer />
-    </div>
+    </motion.div>
   )
 }
 
