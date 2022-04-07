@@ -21,6 +21,10 @@ const useAuthForm = (checkErrorMsg = '', optionalCheck = false) => {
     setCreds({ ...creds, [id]: value })
   }
 
+  const hackHandler = () => {
+    setCreds({ ...creds, email: 'bizan@hooli.com', password: 'hoolicloud' })
+  }
+
   const onBlurHandler = e => {
     const { id, value } = e.target
     if (value === '') {
@@ -67,6 +71,7 @@ const useAuthForm = (checkErrorMsg = '', optionalCheck = false) => {
     creds,
     error,
     onChangeHandler,
+    hackHandler,
     onBlurHandler,
     checkHandler,
     validateForm,
