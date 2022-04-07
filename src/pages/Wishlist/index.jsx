@@ -1,10 +1,12 @@
 import React from 'react'
 import Lottie from 'react-lottie'
+import { motion } from 'framer-motion'
 
 import { Navbar, Footer, VerticalCard, Loader } from '../../components'
 import { useWishlist, useGlobalState, actions } from '../../store'
 import { getWishlistService } from '../../services'
 import animation from '../../assets/lotties/wishlist.json'
+import { fadingParent } from '../../utils'
 import './styles.scss'
 
 const defaultOptions = {
@@ -39,7 +41,12 @@ const Wishlist = () => {
   React.useEffect(() => getItems(), [])
 
   return (
-    <>
+    <motion.div
+      variants={fadingParent}
+      initial="hidden"
+      animate="show"
+      exit="exit"
+    >
       <Navbar />
       <main className="wishlist-container">
         {isLoading ? (
@@ -65,7 +72,7 @@ const Wishlist = () => {
         )}
       </main>
       <Footer />
-    </>
+    </motion.div>
   )
 }
 

@@ -1,8 +1,10 @@
 import React from 'react'
+import { motion } from 'framer-motion'
 
 import { getProductService } from '../../services'
 import { Navbar, Footer, Filter, VerticalCard, Loader } from '../../components'
 import { useGlobalState, useProducts, actions } from '../../store'
+import { fadingParent } from '../../utils'
 import './styles.scss'
 
 const sortProducts = (prods, filters) => {
@@ -104,7 +106,12 @@ const Shop = () => {
   )
 
   return (
-    <>
+    <motion.div
+      variants={fadingParent}
+      initial="hidden"
+      animate="show"
+      exit="exit"
+    >
       <Navbar hasSearch={true} />
       {isLoading ? (
         <Loader />
@@ -144,7 +151,7 @@ const Shop = () => {
         </main>
       )}
       <Footer />
-    </>
+    </motion.div>
   )
 }
 
